@@ -1,0 +1,46 @@
+{% extends "RITSOFT_APP/users/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Contact</h1>
+
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Map Column -->
+        <div class="col-lg-8 mb-4">
+            <!-- Embedded Google Map -->
+            <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                    src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Rajiv%20Gandhi%20Institute%20of%20Technology%2CKottayam+(RIT)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"></iframe>
+        </div>
+        <!-- Contact Details Column -->
+        <div class="col-lg-4 mb-4">
+            <h3>Contact Details</h3>
+            <p>
+                Rajiv Gandhi Institute of Technology, Pampady
+                <br>Kottayam
+                <br>
+            </p>
+            <p>
+                <abbr title="Phone">P</abbr>: 0481 2507763
+            </p>
+            <p>
+                <abbr title="Email">E</abbr>:
+                <a href="mailto:info@rit.ac.in">info@rit.ac.in
+                </a>
+            </p>
+            <p>
+                <abbr title="Hours">W</abbr>:
+                <a href="http://www.rit.ac.in">www.rit.ac.in</a>
+            </p>
+        </div>
+    </div>
+    <!-- /.row -->
+
+</div>
+
+<hr>
+{% endblock content %}

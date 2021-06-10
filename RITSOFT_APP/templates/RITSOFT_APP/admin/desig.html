@@ -1,0 +1,89 @@
+{% extends "RITSOFT_APP/admin/base.html" %}
+{% load static %}
+{% block content %}
+    <script>
+        function getfac(dept_id) {
+            {#console.log(dept_id);#}
+            $.ajax({
+                url: '/fetch_faculty/',
+                method: 'POST',
+                data: {
+                    'dept_id': dept_id,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',
+                },
+                dataType: 'json',
+                success: function (data) {
+                    $('#data').removeClass('disabled hidden');
+                    if (data.faculties.length === 0) {
+                        var fac_options = "<option value=\"\">No Faculties Available</option>";
+                    } else {
+                        var fac_options = "<option value=\"\">Select Faculty</option>";
+                        $.each(data.faculties, function (index, value) {
+                            fac_options += "<option value=\"" + value.pk + "\">" + value.name + "</option>";
+                        });
+                    }
+                    $('#data1').empty();
+                    $('#faculty').html(fac_options);
+                }
+            });
+        }
+
+        function getdesig(fac_id) {
+            {#console.log(fac_id);#}
+            $.ajax({
+                url: '/fetch_designation/',
+                method: 'POST',
+                data: {
+                    'fac_id': fac_id,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',
+                },
+                success: function (data) {
+                    $('#data1').html(data);
+                }
+            });
+        }
+    </script>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header">Change Designation</h2>
+                </div>
+            </div>
+            <form id="submit" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Department:</label>
+                            <select onchange="getfac(this.value)" name="dept_id" class="form-control" required>
+                                <option value="" selected disabled hidden>Select</option>
+                                {% for dept in departments %}
+                                    <option value="{{ dept.id }}">{{ dept.dept_name }} </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 disabled hidden" id="data">
+                        <div class="form-group">
+                            <label>Faculty Name:</label>
+                            <select class="form-control" name="faculty_id" id="faculty" onchange="getdesig(this.value)"
+                                    required>
+                                <option value="" selected disabled hidden>Select</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="data1">
+                </div>
+
+            </form>
+
+        </div> <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock content %}

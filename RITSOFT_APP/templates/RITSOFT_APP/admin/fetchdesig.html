@@ -1,0 +1,73 @@
+{% load custom_filters %}
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-check">
+            <input type="checkbox" name="designation[]" {% if designation|check_designation:'prncpl'  %} checked{% endif %} id="cb_prncpl"
+                   value="prncpl">
+            <label for="cb_prncpl">PRINCIPAL</label>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="form-check">
+            <input type="checkbox" name="designation[]" {% if designation|check_designation:'pgdean'  %} checked{% endif %} id="cb_pgdean"
+                   value="pgdean">
+            <label for="cb_pgdean">PG DEAN</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-check">
+            <input type="checkbox" name="designation[]" {% if designation|check_designation:'ugdean'  %} checked{% endif %} id="cb_ugdean"
+                   value="ugdean">
+            <label for="cb_ugdean">UG DEAN</label>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-check">
+            <input type="checkbox" name="designation[]" {% if designation|check_designation:'hod'  %} checked{% endif %} id="cb_hod" value="hod">
+            <label for="cb_hod">HOD</label>
+        </div>
+
+    </div>
+    <div class="col-sm-4">
+        <div class="form-check">
+            <input type="checkbox" name="designation[]" {% if designation|check_designation:'fclty'  %} checked{% endif %} id="cb_fclty"
+                   value="fclty">
+            <label for="cb_fclty">FACULTY</label>
+
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="form-check">
+            <input type="checkbox" name="designation[]" {% if designation|check_designation:'sadean'  %} checked{% endif %} id="cb_sadean"
+                   value="sadean">
+            <label for="cb_sadean">Student Affairs Dean</label>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-sm-4">
+        <div class="form-check">
+            <input type="checkbox" name="designation[]" {% if designation|check_designation:'stfadv'  %} checked{% endif %} id="cb_stfadv"
+                   value="stfadv">
+            <label for="cb_stfadv">Staff Advisor</label>
+
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+        <input type="submit" class="btn btn-primary btn-block" name="submit" value="Submit"/>
+    </div>
+</div>
